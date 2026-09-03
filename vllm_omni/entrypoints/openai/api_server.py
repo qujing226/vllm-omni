@@ -513,7 +513,7 @@ async def omni_run_server_worker(listen_address, sock, args, client_config=None,
         remove_route_from_app(app, "/v1/chat/completions", {"POST"})
         remove_route_from_app(app, "/v1/chat/completions/batch", {"POST"})
         remove_route_from_app(app, "/v1/models", {"GET"})  # Remove upstream /v1/models to use omni's handler
-        remove_route_from_app(app, "/health", frozenset({"GET"}))
+        remove_route_from_app(app, "/health", {"GET"})
         app.include_router(router)
 
         # OMNI: Override upstream exception handlers with Omni-aware versions
